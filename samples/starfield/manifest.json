@@ -1,9 +1,0 @@
-{
-  "name": "Starfield",
-  "author": "Test Author",
-  "version": "1.0",
-  "description": "A single dark wallpaper for every screen",
-  "wallpapers": {
-    "mode": "universal"
-  }
-}

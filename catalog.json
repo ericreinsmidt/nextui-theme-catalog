@@ -20,8 +20,8 @@
         "(PS)",
         "(SFC)"
       ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.preview.png"
     }
   ],
   "wallpapers": [
@@ -44,8 +44,8 @@
         "(PS)",
         "(SFC)"
       ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.preview.png"
     },
     {
       "id": "nostalgia",
@@ -64,8 +64,8 @@
         "(PS)",
         "(SFC)"
       ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/nostalgia.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/nostalgia.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/nostalgia.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/nostalgia.preview.png"
     },
     {
       "id": "starfield",
@@ -79,8 +79,8 @@
       "wallpaper_count": 1,
       "icon_count": 0,
       "systems": [],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/starfield.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/starfield.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/starfield.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/starfield.preview.png"
     }
   ],
   "icons": [
@@ -103,8 +103,8 @@
         "(PS)",
         "(SFC)"
       ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.preview.png"
     },
     {
       "id": "pixel-consoles",
@@ -125,8 +125,8 @@
         "(PS)",
         "(SFC)"
       ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/pixel-consoles.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/pixel-consoles.png"
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pixel-consoles.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pixel-consoles.preview.png"
     }
   ]
 }

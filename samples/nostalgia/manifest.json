@@ -1,9 +1,0 @@
-{
-  "name": "Nostalgia",
-  "author": "Test Author",
-  "version": "1.0",
-  "description": "Warm retro wallpapers for select systems",
-  "wallpapers": {
-    "mode": "per_system"
-  }
-}

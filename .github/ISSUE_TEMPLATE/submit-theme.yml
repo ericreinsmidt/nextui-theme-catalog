@@ -1,0 +1,64 @@
+name: "Submit a Theme"
+description: Submit a new theme or update an existing one
+title: "[Theme] "
+labels: ["new-theme"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a theme! Please fill out the fields below and attach your theme zip file.
+
+        Your zip must contain:
+        - `manifest.json` with name, author, version
+        - `preview.png` showing what the theme looks like
+        - `wallpapers/` and/or `icons/` directories with your assets
+
+        See the [README](https://github.com/ericreinsmidt/nextui-theme-catalog#creating-a-theme) for full details.
+
+  - type: input
+    id: theme_name
+    attributes:
+      label: Theme Name
+      description: Display name for your theme
+      placeholder: "My Awesome Theme"
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: Your name or handle
+      placeholder: "YourName"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of your theme (optional)
+      placeholder: "A dark blue theme with custom wallpapers and pixel art icons"
+    validations:
+      required: false
+
+  - type: textarea
+    id: zip_file
+    attributes:
+      label: Theme Zip File
+      description: Drag and drop your theme zip file here. GitHub will upload it and insert a link.
+      placeholder: "Drag your .zip file into this box"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Checklist
+      options:
+        - label: My zip contains a valid manifest.json with name, author, and version fields
+          required: true
+        - label: My zip contains a preview.png image
+          required: true
+        - label: My zip contains wallpapers/ and/or icons/ directories
+          required: true
