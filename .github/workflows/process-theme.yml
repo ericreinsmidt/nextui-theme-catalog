@@ -2,7 +2,7 @@ name: Process Theme Submission
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, labeled]
 
 concurrency:
   group: catalog-update
