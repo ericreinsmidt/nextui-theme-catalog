@@ -3,7 +3,29 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REGISTRY_DIR="$SCRIPT_DIR/registry"
+SAMPLES_DIR="$SCRIPT_DIR/samples"
+PREVIEWS_DIR="$SCRIPT_DIR/previews"
 OUTPUT="$SCRIPT_DIR/catalog.json"
+
+# Auto-detect GitHub repo from git remote
+REPO=$(git -C "$SCRIPT_DIR" remote get-url origin 2>/dev/null \
+    | sed -E 's#(git@github\.com:|https://github\.com/)##; s#\.git$##')
+
+if [ -z "$REPO" ]; then
+    echo "ERROR: Could not detect GitHub repo from git remote"
+    exit 1
+fi
+
+BRANCH="${GITHUB_REF_NAME:-main}"
+BASE_URL="https://github.com/$REPO/raw/$BRANCH"
+RAW_URL="https://raw.githubusercontent.com/$REPO/$BRANCH"
+
+echo "Repo:   $REPO"
+echo "Branch: $BRANCH"
+echo "Base:   $BASE_URL"
+echo ""
+
+mkdir -p "$PREVIEWS_DIR"
 
 errors=0
 entries=""
@@ -11,15 +33,13 @@ entries=""
 for reg_file in "$REGISTRY_DIR"/*.json; do
     [ -f "$reg_file" ] || continue
     id=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['id'])" "$reg_file")
-    url=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['url'])" "$reg_file")
 
     echo "--- Processing: $id ---"
 
-    # Resolve source directory (local file:// or future GitHub)
-    if [[ "$url" == file://* ]]; then
-        source_dir="$SCRIPT_DIR/${url#file://}"
-    else
-        echo "  SKIP: non-local URLs not yet supported"
+    source_dir="$SAMPLES_DIR/$id"
+    if [ ! -d "$source_dir" ]; then
+        echo "  FAIL: samples/$id/ not found"
+        errors=$((errors + 1))
         continue
     fi
 
@@ -49,14 +69,13 @@ else:
         continue
     fi
 
-    # Validate preview exists
+    # Validate preview exists and is a real PNG
     if [ ! -f "$source_dir/preview.png" ]; then
         echo "  FAIL: missing preview.png"
         errors=$((errors + 1))
         continue
     fi
 
-    # Validate preview is a real PNG
     if ! file "$source_dir/preview.png" | grep -q "PNG"; then
         echo "  FAIL: preview.png is not a valid PNG"
         errors=$((errors + 1))
@@ -137,12 +156,25 @@ else:
     fi
 
     # Build systems list from filenames
-    systems=$(find "$source_dir" -path "*/systems/*.png" -exec basename {} .png \; 2>/dev/null | sort -u | python3 -c "import sys,json; print(json.dumps(sorted(set(l.strip() for l in sys.stdin))))")
+    systems=$(find "$source_dir" -path "*/systems/*.png" -exec basename {} .png \; 2>/dev/null \
+        | sort -u \
+        | python3 -c "import sys,json; print(json.dumps(sorted(set(l.strip() for l in sys.stdin))))")
 
     echo "  OK: wallpapers=$has_wallpapers ($wallpaper_mode, $wallpaper_count files) icons=$has_icons ($icon_count files)"
     echo "  Systems: $systems"
 
-    # Build catalog entry JSON
+    # Build zip from sample dir (exclude preview.png — it's served separately)
+    zip_file="$SCRIPT_DIR/$id.zip"
+    (cd "$source_dir" && zip -qr "$zip_file" . -x "preview.png")
+    echo "  Zip: $id.zip ($(du -h "$zip_file" | cut -f1))"
+
+    # Copy preview to previews/
+    cp "$source_dir/preview.png" "$PREVIEWS_DIR/$id.png"
+
+    # Build catalog entry JSON with proper URLs
+    download_url="$BASE_URL/$id.zip"
+    preview_url="$RAW_URL/previews/$id.png"
+
     entry=$(python3 -c "
 import json, sys
 
@@ -159,10 +191,11 @@ entry = {
     'wallpaper_count': int(sys.argv[6]),
     'icon_count': int(sys.argv[7]),
     'systems': json.loads(sys.argv[8]),
-    'url': sys.argv[9]
+    'url': sys.argv[9],
+    'preview_url': sys.argv[10]
 }
 print(json.dumps(entry))
-" "$manifest" "$id" "$has_wallpapers" "$wallpaper_mode" "$has_icons" "$wallpaper_count" "$icon_count" "$systems" "$url")
+" "$manifest" "$id" "$has_wallpapers" "$wallpaper_mode" "$has_icons" "$wallpaper_count" "$icon_count" "$systems" "$download_url" "$preview_url")
 
     if [ -z "$entries" ]; then
         entries="$entry"
@@ -187,5 +220,8 @@ print(json.dumps(catalog, indent=2))
 echo ""
 echo "=== Build complete ==="
 echo "Output: $OUTPUT"
+echo "Themes:     $(python3 -c "import json; print(len(json.load(open('$OUTPUT'))['themes']))")"
+echo "Wallpapers: $(python3 -c "import json; print(len(json.load(open('$OUTPUT'))['wallpapers']))")"
+echo "Icons:      $(python3 -c "import json; print(len(json.load(open('$OUTPUT'))['icons']))")"
 echo "Errors: $errors"
 [ "$errors" -eq 0 ] || exit 1

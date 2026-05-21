@@ -21,7 +21,7 @@
         "(SFC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/midnight/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
     }
   ],
   "wallpapers": [
@@ -45,7 +45,7 @@
         "(SFC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/midnight/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
     },
     {
       "id": "nostalgia",
@@ -65,7 +65,7 @@
         "(SFC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/nostalgia.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/nostalgia/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/nostalgia.png"
     },
     {
       "id": "starfield",
@@ -80,7 +80,7 @@
       "icon_count": 0,
       "systems": [],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/starfield.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/starfield/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/starfield.png"
     }
   ],
   "icons": [
@@ -104,7 +104,7 @@
         "(SFC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/midnight/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/midnight.png"
     },
     {
       "id": "pixel-consoles",
@@ -126,7 +126,7 @@
         "(SFC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/pixel-consoles.zip",
-      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/samples/pixel-consoles/preview.png"
+      "preview_url": "https://raw.githubusercontent.com/ericreinsmidt/nextui-theme-catalog/main/previews/pixel-consoles.png"
     }
   ]
 }
