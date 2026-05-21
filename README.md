@@ -1,113 +1,247 @@
 # NextUI Theme Catalog
 
-Community theme repository for [TheyTheMeRollin](https://github.com/ericreinsmidt/nextui-theythemerollin), the theme manager for NextUI on TrimUI handhelds.
+Community themes for [TheyTheMeRollin](https://github.com/ericreinsmidt/nextui-theythemerollin), a theme manager for NextUI on TrimUI handhelds (Brick, Smart Pro).
 
-Themes are wallpaper and icon packs that change the look of your device. Browse and install them directly from the app.
+Themes can include **wallpapers** (menu backgrounds), **icons** (system icons), or both.
 
 ---
 
 ## Submitting a Theme
 
-1. Create your theme zip (see below)
-2. [Open a submission issue](https://github.com/ericreinsmidt/nextui-theme-catalog/issues/new?template=submit-theme.yml)
-3. Fill in the details and drag your zip file into the form
-4. A bot will validate your theme and create a PR automatically
-5. Once approved and merged, your theme appears in the app
+Submitting is simple — no git knowledge required.
 
-## Creating a Theme
+### Step 1: Create Your Theme
 
-### Zip Structure
-
-Your zip file should contain these files at the root:
+Organize your files into this folder structure, then zip them:
 
 ```
-manifest.json           required
-preview.png             required — screenshot of your theme
-wallpapers/             optional — include if your theme has wallpapers
-  wallpaper.png         for universal mode (one image for all screens)
-  root.png              for per-system mode (fallback/main menu wallpaper)
-  systems/
-    (GB).png            per-system wallpapers
-    (GBA).png
-    (SFC).png
+my-theme/
+  manifest.json        <- required (theme info)
+  preview.png          <- required (screenshot of your theme)
+  wallpapers/          <- optional
     ...
-  lists/
-    (GB).png            per-system list wallpapers
-    (GBA).png
+  icons/               <- optional
     ...
-icons/                  optional — include if your theme has icons
-  systems/
-    (GB).png            system icons
-    (GBA).png
-    ...
-  collections.png       Collections folder icon
-  recently_played.png   Recently Played icon
-  tools.png             Tools icon
 ```
+
+Details on each part below.
+
+### Step 2: Submit
+
+1. Go to the **[Submit a Theme](https://github.com/ericreinsmidt/nextui-theme-catalog/issues/new?template=submit-theme.yml)** page
+2. Fill in the theme name, your name, and a short description
+3. Drag your `.zip` file into the upload box
+4. Check the boxes and submit
+
+A bot will automatically validate your zip. If something's wrong, it'll tell you exactly what to fix. If everything passes, a PR is created and a maintainer will merge it. Your theme will then appear in the app for everyone to download.
+
+---
+
+## Theme Structure
 
 ### manifest.json
+
+Every theme needs a `manifest.json` at the root of the zip:
 
 ```json
 {
   "name": "My Theme",
   "author": "Your Name",
   "version": "1.0",
-  "description": "A brief description of your theme",
-  "wallpapers": {
-    "mode": "per_system"
-  },
-  "icons": true
+  "description": "A short description of your theme"
 }
 ```
 
-**Required fields:** `name`, `author`, `version`
+If your theme includes wallpapers, add a `wallpapers` field:
 
-**Wallpaper mode** must match your file structure:
-- `"universal"` — single `wallpapers/wallpaper.png` applied everywhere
-- `"per_system"` — `wallpapers/systems/` with per-console images, optional `root.png` as fallback
+```json
+{
+  "name": "My Theme",
+  "author": "Your Name",
+  "version": "1.0",
+  "description": "A short description of your theme",
+  "wallpapers": {
+    "mode": "per_system"
+  }
+}
+```
 
-Omit the `wallpapers` field if your theme has no wallpapers (icons only).
+**Wallpaper modes:**
+- `"universal"` — one wallpaper used for every screen
+- `"per_system"` — different wallpapers per console
 
-### System Tags
+If your theme is icons-only, just leave out the `wallpapers` field entirely.
 
-Use these tags for system-specific wallpapers and icons:
+### preview.png
 
-| Tag | System |
-|-----|--------|
-| (FC) | Famicom / NES |
-| (SFC) | Super Famicom / SNES |
-| (GB) | Game Boy |
-| (GBC) | Game Boy Color |
-| (GBA) | Game Boy Advance |
-| (MD) | Mega Drive / Genesis |
-| (PS) | PlayStation |
-| (N64) | Nintendo 64 |
-| (NDS) | Nintendo DS |
-| (PSP) | PSP |
-| (MAME) | Arcade / MAME |
-| (PCE) | PC Engine / TurboGrafx |
-| (NGP) | Neo Geo Pocket |
-| (WS) | WonderSwan |
-| (MSX) | MSX |
-| (PICO8) | PICO-8 |
+A screenshot showing what your theme looks like in action. This is what people see when browsing in the app.
 
-You only need to include the systems your theme supports. Missing systems keep their existing wallpaper/icon.
+- **Resolution:** 1024x768 (Brick native) recommended
+- **Content:** Main menu or a system list showing your wallpaper/icons
+- **Format:** PNG
 
-### Preview Image
+### Wallpapers
 
-`preview.png` should be a screenshot showing your theme in action — the main menu or a system list. This is what users see when browsing themes in the app. Recommended resolution: 1024x768 (Brick native).
+Put your wallpaper images in a `wallpapers/` folder.
+
+**Universal mode** (one wallpaper everywhere):
+
+```
+wallpapers/
+  wallpaper.png        <- this image is used for all screens
+```
+
+**Per-system mode** (different per console):
+
+```
+wallpapers/
+  root.png             <- main menu background (also used as fallback)
+  systems/
+    (GB).png           <- Game Boy menu background
+    (SFC).png          <- SNES menu background
+    ...
+  lists/
+    (GB).png           <- Game Boy game list background
+    (SFC).png          <- SNES game list background
+    ...
+```
+
+- `root.png` is the main menu wallpaper and the fallback for any system you don't include
+- `systems/` wallpapers appear on the system's menu screen
+- `lists/` wallpapers appear on the game list screen
+- You don't need every system — only include the ones you want to customize
+
+### Icons
+
+Put your icon images in an `icons/` folder:
+
+```
+icons/
+  systems/
+    (GB).png           <- Game Boy icon
+    (SFC).png          <- SNES icon
+    ...
+  collections.png      <- Collections folder icon (optional)
+  recently_played.png  <- Recently Played icon (optional)
+  tools.png            <- Tools icon (optional)
+```
+
+Icons appear on the main menu next to each system name. You only need to include the systems you want to customize.
 
 ---
 
+## System Tags
+
+Use these tags for filenames. The tag is the part in parentheses from the system's folder name on the device.
+
+| Tag | System |
+|-----|--------|
+| `(FC)` | Nintendo Entertainment System / Famicom |
+| `(FDS)` | Famicom Disk System |
+| `(SFC)` | Super Nintendo / SNES |
+| `(GB)` | Game Boy |
+| `(GBC)` | Game Boy Color |
+| `(GBA)` | Game Boy Advance |
+| `(N64)` | Nintendo 64 |
+| `(MD)` | Sega Genesis / Mega Drive |
+| `(SMS)` | Sega Master System |
+| `(GG)` | Sega Game Gear |
+| `(SEGACD)` | Sega CD |
+| `(32X)` | Sega 32X |
+| `(PS)` | Sony PlayStation |
+| `(PSP)` | Sony PSP |
+| `(PCE)` | TurboGrafx-16 / PC Engine |
+| `(NEOGEO)` | Neo Geo |
+| `(NGP)` | Neo Geo Pocket |
+| `(NGPC)` | Neo Geo Pocket Color |
+| `(MAME)` | Arcade (MAME) |
+| `(FBN)` | Arcade (FinalBurn Neo) |
+| `(MSX)` | Microsoft MSX |
+| `(LYNX)` | Atari Lynx |
+| `(A2600)` | Atari 2600 |
+| `(A5200)` | Atari 5200 |
+| `(A7800)` | Atari 7800 |
+| `(COLECO)` | ColecoVision |
+| `(VB)` | Virtual Boy |
+| `(P8)` | Pico-8 |
+| `(PKM)` | Pokemon mini |
+| `(CPC)` | Amstrad CPC |
+| `(C64)` | Commodore 64 |
+| `(PRBOOM)` | Doom |
+| `(SGB)` | Super Game Boy |
+
+You only need to include the systems your theme supports. Any system you skip keeps its current wallpaper/icon.
+
+---
+
+## Examples
+
+### Full theme (wallpapers + icons, per-system)
+
+```
+manifest.json
+preview.png
+wallpapers/
+  root.png
+  systems/
+    (GB).png
+    (GBA).png
+    (SFC).png
+    (MD).png
+    (PS).png
+  lists/
+    (GB).png
+    (GBA).png
+    (SFC).png
+    (MD).png
+    (PS).png
+icons/
+  systems/
+    (GB).png
+    (GBA).png
+    (SFC).png
+    (MD).png
+    (PS).png
+  collections.png
+  recently_played.png
+  tools.png
+```
+
+### Universal wallpaper (one image for all screens)
+
+```
+manifest.json
+preview.png
+wallpapers/
+  wallpaper.png
+```
+
+### Icons only
+
+```
+manifest.json
+preview.png
+icons/
+  systems/
+    (GB).png
+    (GBA).png
+    (SFC).png
+```
+
+---
+
+## Updating a Theme
+
+Submit a new issue with the same theme name. The bot will replace the old version with the new one.
+
 ## For Maintainers
 
-### Approving a Theme
-Merge the auto-generated PR. The catalog updates immediately.
+### Approving a theme
+Merge the auto-generated PR. The issue closes automatically.
 
-### Removing a Theme
+### Removing a theme
+Edit `catalog.json` to remove the entry, then delete the release assets:
 ```bash
-# Remove from catalog.json
-# Then delete the release assets:
 gh release delete-asset assets <id>.zip
 gh release delete-asset assets <id>.preview.png
 ```
