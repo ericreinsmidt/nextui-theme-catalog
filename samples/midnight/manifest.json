@@ -1,0 +1,10 @@
+{
+  "name": "Midnight",
+  "author": "Test Author",
+  "version": "1.0",
+  "description": "Deep blue theme with matching wallpapers and icons",
+  "wallpapers": {
+    "mode": "per_system"
+  },
+  "icons": true
+}

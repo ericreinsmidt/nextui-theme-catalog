@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "themes": [
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep blue theme with matching wallpapers and icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip"
+    }
+  ],
+  "wallpapers": [
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep blue theme with matching wallpapers and icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip"
+    },
+    {
+      "id": "nostalgia",
+      "name": "Nostalgia",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Warm retro wallpapers for select systems",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": false,
+      "wallpaper_count": 9,
+      "icon_count": 0,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/nostalgia.zip"
+    },
+    {
+      "id": "starfield",
+      "name": "Starfield",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "A single dark wallpaper for every screen",
+      "has_wallpapers": true,
+      "wallpaper_mode": "universal",
+      "has_icons": false,
+      "wallpaper_count": 1,
+      "icon_count": 0,
+      "systems": [],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/starfield.zip"
+    }
+  ],
+  "icons": [
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep blue theme with matching wallpapers and icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/midnight.zip"
+    },
+    {
+      "id": "pixel-consoles",
+      "name": "Pixel Consoles",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Pixel art system icons",
+      "has_wallpapers": false,
+      "wallpaper_mode": "none",
+      "has_icons": true,
+      "wallpaper_count": 0,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/raw/main/pixel-consoles.zip"
+    }
+  ]
+}
