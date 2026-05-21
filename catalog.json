@@ -44,6 +44,32 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
+    },
+    {
+      "id": "neon-test",
+      "name": "Neon Test",
+      "author": "Eric Reinsmidt",
+      "version": "1.0",
+      "description": "Test theme with labeled wallpapers and icons to verify placement",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 21,
+      "icon_count": 13,
+      "systems": [
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(N64)",
+        "(NEOGEO)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
     }
   ],
   "wallpapers": [
@@ -125,6 +151,32 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
+    },
+    {
+      "id": "neon-test",
+      "name": "Neon Test",
+      "author": "Eric Reinsmidt",
+      "version": "1.0",
+      "description": "Test theme with labeled wallpapers and icons to verify placement",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 21,
+      "icon_count": 13,
+      "systems": [
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(N64)",
+        "(NEOGEO)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
     }
   ],
   "icons": [
@@ -193,6 +245,32 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
+    },
+    {
+      "id": "neon-test",
+      "name": "Neon Test",
+      "author": "Eric Reinsmidt",
+      "version": "1.0",
+      "description": "Test theme with labeled wallpapers and icons to verify placement",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 21,
+      "icon_count": 13,
+      "systems": [
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(N64)",
+        "(NEOGEO)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
     }
   ]
 }
