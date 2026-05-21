@@ -22,6 +22,28 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/midnight.preview.png"
+    },
+    {
+      "id": "ocean-depths",
+      "name": "Ocean Depths",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep sea teal and navy wallpapers with matching icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
     }
   ],
   "wallpapers": [
@@ -81,6 +103,28 @@
       "systems": [],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/starfield.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/starfield.preview.png"
+    },
+    {
+      "id": "ocean-depths",
+      "name": "Ocean Depths",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep sea teal and navy wallpapers with matching icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
     }
   ],
   "icons": [
@@ -127,6 +171,28 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pixel-consoles.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pixel-consoles.preview.png"
+    },
+    {
+      "id": "ocean-depths",
+      "name": "Ocean Depths",
+      "author": "Test Author",
+      "version": "1.0",
+      "description": "Deep sea teal and navy wallpapers with matching icons",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 13,
+      "icon_count": 9,
+      "systems": [
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(MD)",
+        "(PS)",
+        "(SFC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/ocean-depths.preview.png"
     }
   ]
 }
