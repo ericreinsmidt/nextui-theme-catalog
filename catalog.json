@@ -508,6 +508,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
+    },
+    {
+      "id": "pop-tarts-clean",
+      "name": "Pop-Tarts Clean",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts Clean theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
     }
   ],
   "wallpapers": [
@@ -1169,6 +1201,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
+    },
+    {
+      "id": "pop-tarts-clean",
+      "name": "Pop-Tarts Clean",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts Clean theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
     }
   ],
   "icons": [
@@ -1701,6 +1765,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
+    },
+    {
+      "id": "pop-tarts-clean",
+      "name": "Pop-Tarts Clean",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts Clean theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
     }
   ]
 }
