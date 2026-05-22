@@ -2,57 +2,6 @@
   "version": 1,
   "themes": [
     {
-      "id": "pearly-gate",
-      "name": "Pearly-Gate",
-      "author": "Shin",
-      "version": "1.0.0",
-      "description": "Pearly-Gate theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": true,
-      "wallpaper_count": 16,
-      "icon_count": 37,
-      "systems": [
-        "(32X)",
-        "(A2600)",
-        "(A5200)",
-        "(C128)",
-        "(C64)",
-        "(COLECO)",
-        "(CPC)",
-        "(DC)",
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(GW)",
-        "(LYNX)",
-        "(MAME)",
-        "(MD)",
-        "(N64)",
-        "(NDS)",
-        "(NGPC)",
-        "(P8)",
-        "(PCE)",
-        "(PET)",
-        "(PKM)",
-        "(PLUS4)",
-        "(PS)",
-        "(PSP)",
-        "(PUAE)",
-        "(SFC)",
-        "(SGB)",
-        "(SMS)",
-        "(VB)",
-        "(VIC)",
-        "(WSC)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
-    },
-    {
       "id": "pop-tarts-clean",
       "name": "Pop-Tarts Clean",
       "author": "Shin",
@@ -484,9 +433,7 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
-    }
-  ],
-  "wallpapers": [
+    },
     {
       "id": "pearly-gate",
       "name": "Pearly-Gate",
@@ -536,8 +483,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.icon.png"
+    }
+  ],
+  "wallpapers": [
     {
       "id": "pop-tarts-clean",
       "name": "Pop-Tarts Clean",
@@ -1092,9 +1043,7 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
-    }
-  ],
-  "icons": [
+    },
     {
       "id": "pearly-gate",
       "name": "Pearly-Gate",
@@ -1144,8 +1093,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.icon.png"
+    }
+  ],
+  "icons": [
     {
       "id": "pop-tarts-clean",
       "name": "Pop-Tarts Clean",
@@ -1578,6 +1531,59 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
+    },
+    {
+      "id": "pearly-gate",
+      "name": "Pearly-Gate",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pearly-Gate theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 37,
+      "systems": [
+        "(32X)",
+        "(A2600)",
+        "(A5200)",
+        "(C128)",
+        "(C64)",
+        "(COLECO)",
+        "(CPC)",
+        "(DC)",
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(GW)",
+        "(LYNX)",
+        "(MAME)",
+        "(MD)",
+        "(N64)",
+        "(NDS)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PET)",
+        "(PKM)",
+        "(PLUS4)",
+        "(PS)",
+        "(PSP)",
+        "(PUAE)",
+        "(SFC)",
+        "(SGB)",
+        "(SMS)",
+        "(VB)",
+        "(VIC)",
+        "(WSC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pearly-gate.icon.png"
     }
   ]
 }
