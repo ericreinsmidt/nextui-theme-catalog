@@ -205,13 +205,31 @@ def validate_zip(zip_path, work_dir):
                     wallpaper_sample = pngs[0]
 
     # Find representative icon image path (for icon browse)
+    # Skip fully-transparent PNGs (some themes use blank placeholders)
     icon_sample = None
     if has_icons:
+        candidates = []
         ic_sys_dir = work_dir / "icons" / "systems"
         if ic_sys_dir.is_dir():
-            pngs = sorted(ic_sys_dir.glob("*.png"))
-            if pngs:
-                icon_sample = pngs[0]
+            candidates.extend(sorted(ic_sys_dir.glob("*.png")))
+        # Also check special icons (tools, collections, etc.)
+        ic_dir = work_dir / "icons"
+        candidates.extend(sorted(p for p in ic_dir.glob("*.png") if p.parent == ic_dir))
+        for candidate in candidates:
+            if candidate.stat().st_size < 200:
+                continue
+            # Use ImageMagick to check mean alpha — 0 means fully transparent
+            r = run(["convert", str(candidate), "-channel", "A", "-separate",
+                     "-format", "%[fx:mean]", "info:"])
+            if r.returncode == 0:
+                try:
+                    mean_alpha = float(r.stdout.strip())
+                    if mean_alpha < 0.01:
+                        continue  # skip fully transparent placeholder
+                except ValueError:
+                    pass
+            icon_sample = candidate
+            break
 
     entry = {
         "id": "",  # filled in by caller
