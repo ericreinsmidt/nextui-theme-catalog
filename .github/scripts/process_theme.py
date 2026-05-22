@@ -65,6 +65,7 @@ def extract_zip_url(text):
         r"https://github\.com/user-attachments/assets/[a-f0-9-]+/[^\s\)]+\.zip",
         r"https://github\.com/[^\s\)]+/files/[^\s\)]+\.zip",
         r"https://user-images\.githubusercontent\.com/[^\s\)]+\.zip",
+        r"https://github\.com/[^\s\)]+/releases/download/[^\s\)]+\.zip",
     ]
     for pattern in patterns:
         match = re.search(pattern, text)
