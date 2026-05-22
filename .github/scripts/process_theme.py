@@ -291,10 +291,10 @@ def main():
         if result.returncode != 0:
             fail("Failed to download the zip file from the attachment URL.")
 
-        # Check size (25MB max)
+        # Check size (100MB max)
         zip_size = zip_path.stat().st_size
-        if zip_size > 25 * 1024 * 1024:
-            fail(f"Zip file is too large ({zip_size // 1024 // 1024}MB). Maximum is 25MB.")
+        if zip_size > 100 * 1024 * 1024:
+            fail(f"Zip file is too large ({zip_size // 1024 // 1024}MB). Maximum is 100MB.")
 
         # Validate
         print("Validating zip contents...")
