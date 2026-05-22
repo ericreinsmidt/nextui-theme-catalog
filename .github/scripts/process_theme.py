@@ -188,74 +188,6 @@ def validate_zip(zip_path, work_dir):
         systems.add(png.stem)
     systems = sorted(systems)
 
-    # Find representative wallpaper image path (for browse background)
-    # Skip near-blank images (solid black/transparent root wallpapers)
-    wallpaper_sample = None
-    if has_wallpapers:
-        wp_dir = work_dir / "wallpapers"
-        candidates = []
-        for c in [wp_dir / "root.png", wp_dir / "wallpaper.png"]:
-            if c.exists():
-                candidates.append(c)
-        sys_dir = wp_dir / "systems"
-        if sys_dir.is_dir():
-            candidates.extend(sorted(sys_dir.glob("*.png")))
-        for candidate in candidates:
-            if candidate.stat().st_size < 200:
-                continue
-            try:
-                import struct
-                with open(candidate, "rb") as cf:
-                    sig = cf.read(8)
-                    if sig[:4] != b'\x89PNG':
-                        continue
-                    cf.read(4)
-                    cf.read(4)
-                    w, h = struct.unpack(">II", cf.read(8))
-                    pixels = w * h
-                    # Solid color/blank wallpapers compress to <0.04 bytes/pixel;
-                    # real artwork is 0.05+
-                    if pixels > 0 and candidate.stat().st_size / pixels < 0.04:
-                        continue
-            except Exception:
-                pass
-            wallpaper_sample = candidate
-            break
-
-    # Find representative icon image path (for icon browse)
-    # Skip fully-transparent PNGs (some themes use blank placeholders)
-    icon_sample = None
-    if has_icons:
-        candidates = []
-        ic_sys_dir = work_dir / "icons" / "systems"
-        if ic_sys_dir.is_dir():
-            candidates.extend(sorted(ic_sys_dir.glob("*.png")))
-        # Also check special icons (tools, collections, etc.)
-        ic_dir = work_dir / "icons"
-        candidates.extend(sorted(p for p in ic_dir.glob("*.png") if p.parent == ic_dir))
-        for candidate in candidates:
-            fsize = candidate.stat().st_size
-            if fsize < 200:
-                continue
-            # Parse PNG IHDR to get dimensions, then check bytes-per-pixel ratio.
-            # Fully transparent placeholders compress to ~5-7 bytes per 1000 pixels.
-            try:
-                import struct
-                with open(candidate, "rb") as cf:
-                    sig = cf.read(8)
-                    if sig[:4] != b'\x89PNG':
-                        continue
-                    cf.read(4)  # IHDR length
-                    cf.read(4)  # "IHDR"
-                    w, h = struct.unpack(">II", cf.read(8))
-                    pixels = w * h
-                    if pixels > 0 and fsize / pixels < 0.02:
-                        continue  # ~blank: real icons are 0.03+ bytes/pixel
-            except Exception:
-                pass
-            icon_sample = candidate
-            break
-
     entry = {
         "id": "",  # filled in by caller
         "name": manifest["name"],
@@ -270,10 +202,6 @@ def validate_zip(zip_path, work_dir):
         "systems": systems,
         "url": "",
         "preview_url": "",
-        "wallpaper_preview_url": "",
-        "icon_preview_url": "",
-        "_wallpaper_sample": str(wallpaper_sample) if wallpaper_sample else "",
-        "_icon_sample": str(icon_sample) if icon_sample else "",
     }
 
     return entry, []
@@ -402,30 +330,6 @@ def main():
         result = run(["gh", "release", "upload", "assets", str(preview_dest), "--clobber"])
         if result.returncode != 0:
             fail("Failed to upload preview to release assets.")
-
-        # Upload wallpaper sample (for browse background)
-        wp_sample_path = entry.pop("_wallpaper_sample", "")
-        if wp_sample_path and Path(wp_sample_path).exists():
-            wp_dest = tmpdir / f"{eid}.wallpaper.png"
-            shutil.copy2(wp_sample_path, wp_dest)
-            result = run(["gh", "release", "upload", "assets", str(wp_dest), "--clobber"])
-            if result.returncode == 0:
-                entry["wallpaper_preview_url"] = f"https://github.com/{REPO}/releases/download/assets/{eid}.wallpaper.png"
-                print(f"Uploaded wallpaper sample: {Path(wp_sample_path).name}")
-        else:
-            entry.pop("_wallpaper_sample", None)
-
-        # Upload icon sample (for icon browse)
-        ic_sample_path = entry.pop("_icon_sample", "")
-        if ic_sample_path and Path(ic_sample_path).exists():
-            ic_dest = tmpdir / f"{eid}.icon.png"
-            shutil.copy2(ic_sample_path, ic_dest)
-            result = run(["gh", "release", "upload", "assets", str(ic_dest), "--clobber"])
-            if result.returncode == 0:
-                entry["icon_preview_url"] = f"https://github.com/{REPO}/releases/download/assets/{eid}.icon.png"
-                print(f"Uploaded icon sample: {Path(ic_sample_path).name}")
-        else:
-            entry.pop("_icon_sample", None)
 
         # Update catalog.json
         print("Updating catalog.json...")
