@@ -2,57 +2,6 @@
   "version": 1,
   "themes": [
     {
-      "id": "fallout",
-      "name": "Fallout",
-      "author": "Soko",
-      "version": "1.0.0",
-      "description": "Fallout theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": true,
-      "wallpaper_count": 34,
-      "icon_count": 38,
-      "systems": [
-        "(32X)",
-        "(A2600)",
-        "(A5200)",
-        "(C128)",
-        "(C64)",
-        "(COLECO)",
-        "(CPC)",
-        "(DC)",
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(GW)",
-        "(LYNX)",
-        "(MAME)",
-        "(MD)",
-        "(N64)",
-        "(NDS)",
-        "(NGPC)",
-        "(P8)",
-        "(PCE)",
-        "(PET)",
-        "(PKM)",
-        "(PLUS4)",
-        "(PORTS)",
-        "(PS)",
-        "(PSP)",
-        "(PUAE)",
-        "(SFC)",
-        "(SMS)",
-        "(VB)",
-        "(VIC)",
-        "(WSC)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png"
-    },
-    {
       "id": "noir",
       "name": "Noir",
       "author": "Leviathan",
@@ -480,46 +429,6 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.icon.png"
-    }
-  ],
-  "wallpapers": [
-    {
-      "id": "naoblack",
-      "name": "NaoBlack",
-      "author": "Naotib",
-      "version": "1.0.0",
-      "description": "NaoBlack theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": false,
-      "wallpaper_count": 22,
-      "icon_count": 0,
-      "systems": [
-        "(32X)",
-        "(A2600)",
-        "(C64)",
-        "(CPC)",
-        "(DC)",
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(LYNX)",
-        "(MD)",
-        "(MS)",
-        "(N64)",
-        "(NDS)",
-        "(NGP)",
-        "(PCE)",
-        "(PS)",
-        "(PUAE)",
-        "(SFC)",
-        "(WSC)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.preview.png"
     },
     {
       "id": "fallout",
@@ -570,7 +479,49 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png"
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.icon.png"
+    }
+  ],
+  "wallpapers": [
+    {
+      "id": "naoblack",
+      "name": "NaoBlack",
+      "author": "Naotib",
+      "version": "1.0.0",
+      "description": "NaoBlack theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": false,
+      "wallpaper_count": 22,
+      "icon_count": 0,
+      "systems": [
+        "(32X)",
+        "(A2600)",
+        "(C64)",
+        "(CPC)",
+        "(DC)",
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(MS)",
+        "(N64)",
+        "(NDS)",
+        "(NGP)",
+        "(PCE)",
+        "(PS)",
+        "(PUAE)",
+        "(SFC)",
+        "(WSC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.preview.png"
     },
     {
       "id": "game-rentals",
@@ -1080,9 +1031,7 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.wallpaper.png",
       "icon_preview_url": ""
-    }
-  ],
-  "icons": [
+    },
     {
       "id": "fallout",
       "name": "Fallout",
@@ -1132,8 +1081,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.icon.png"
+    }
+  ],
+  "icons": [
     {
       "id": "noir",
       "name": "Noir",
@@ -1562,6 +1515,59 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.icon.png"
+    },
+    {
+      "id": "fallout",
+      "name": "Fallout",
+      "author": "Soko",
+      "version": "1.0.0",
+      "description": "Fallout theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 34,
+      "icon_count": 38,
+      "systems": [
+        "(32X)",
+        "(A2600)",
+        "(A5200)",
+        "(C128)",
+        "(C64)",
+        "(COLECO)",
+        "(CPC)",
+        "(DC)",
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(GW)",
+        "(LYNX)",
+        "(MAME)",
+        "(MD)",
+        "(N64)",
+        "(NDS)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PET)",
+        "(PKM)",
+        "(PLUS4)",
+        "(PORTS)",
+        "(PS)",
+        "(PSP)",
+        "(PUAE)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)",
+        "(VIC)",
+        "(WSC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.icon.png"
     }
   ]
 }
