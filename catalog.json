@@ -522,37 +522,6 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.preview.png"
     },
     {
-      "id": "deep-space",
-      "name": "Deep Space",
-      "author": "Shin",
-      "version": "1.0.0",
-      "description": "Deep Space theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": false,
-      "wallpaper_count": 16,
-      "icon_count": 0,
-      "systems": [
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(LYNX)",
-        "(MD)",
-        "(N64)",
-        "(NGPC)",
-        "(P8)",
-        "(PCE)",
-        "(PS)",
-        "(SFC)",
-        "(SMS)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.preview.png"
-    },
-    {
       "id": "fallout",
       "name": "Fallout",
       "author": "Soko",
@@ -1078,6 +1047,39 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/consolized.icon.png"
+    },
+    {
+      "id": "deep-space",
+      "name": "Deep Space",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Deep Space theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": false,
+      "wallpaper_count": 16,
+      "icon_count": 0,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/deep-space.wallpaper.png",
+      "icon_preview_url": ""
     }
   ],
   "icons": [
