@@ -188,6 +188,31 @@ def validate_zip(zip_path, work_dir):
         systems.add(png.stem)
     systems = sorted(systems)
 
+    # Find representative wallpaper image path (for browse background)
+    wallpaper_sample = None
+    if has_wallpapers:
+        wp_dir = work_dir / "wallpapers"
+        # Prefer root.png, then wallpaper.png (universal), then first system wallpaper
+        for candidate in [wp_dir / "root.png", wp_dir / "wallpaper.png"]:
+            if candidate.exists():
+                wallpaper_sample = candidate
+                break
+        if not wallpaper_sample:
+            sys_dir = wp_dir / "systems"
+            if sys_dir.is_dir():
+                pngs = sorted(sys_dir.glob("*.png"))
+                if pngs:
+                    wallpaper_sample = pngs[0]
+
+    # Find representative icon image path (for icon browse)
+    icon_sample = None
+    if has_icons:
+        ic_sys_dir = work_dir / "icons" / "systems"
+        if ic_sys_dir.is_dir():
+            pngs = sorted(ic_sys_dir.glob("*.png"))
+            if pngs:
+                icon_sample = pngs[0]
+
     entry = {
         "id": "",  # filled in by caller
         "name": manifest["name"],
@@ -202,6 +227,10 @@ def validate_zip(zip_path, work_dir):
         "systems": systems,
         "url": "",
         "preview_url": "",
+        "wallpaper_preview_url": "",
+        "icon_preview_url": "",
+        "_wallpaper_sample": str(wallpaper_sample) if wallpaper_sample else "",
+        "_icon_sample": str(icon_sample) if icon_sample else "",
     }
 
     return entry, []
@@ -330,6 +359,30 @@ def main():
         result = run(["gh", "release", "upload", "assets", str(preview_dest), "--clobber"])
         if result.returncode != 0:
             fail("Failed to upload preview to release assets.")
+
+        # Upload wallpaper sample (for browse background)
+        wp_sample_path = entry.pop("_wallpaper_sample", "")
+        if wp_sample_path and Path(wp_sample_path).exists():
+            wp_dest = tmpdir / f"{eid}.wallpaper.png"
+            shutil.copy2(wp_sample_path, wp_dest)
+            result = run(["gh", "release", "upload", "assets", str(wp_dest), "--clobber"])
+            if result.returncode == 0:
+                entry["wallpaper_preview_url"] = f"https://github.com/{REPO}/releases/download/assets/{eid}.wallpaper.png"
+                print(f"Uploaded wallpaper sample: {Path(wp_sample_path).name}")
+        else:
+            entry.pop("_wallpaper_sample", None)
+
+        # Upload icon sample (for icon browse)
+        ic_sample_path = entry.pop("_icon_sample", "")
+        if ic_sample_path and Path(ic_sample_path).exists():
+            ic_dest = tmpdir / f"{eid}.icon.png"
+            shutil.copy2(ic_sample_path, ic_dest)
+            result = run(["gh", "release", "upload", "assets", str(ic_dest), "--clobber"])
+            if result.returncode == 0:
+                entry["icon_preview_url"] = f"https://github.com/{REPO}/releases/download/assets/{eid}.icon.png"
+                print(f"Uploaded icon sample: {Path(ic_sample_path).name}")
+        else:
+            entry.pop("_icon_sample", None)
 
         # Update catalog.json
         print("Updating catalog.json...")
