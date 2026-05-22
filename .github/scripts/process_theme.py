@@ -216,18 +216,25 @@ def validate_zip(zip_path, work_dir):
         ic_dir = work_dir / "icons"
         candidates.extend(sorted(p for p in ic_dir.glob("*.png") if p.parent == ic_dir))
         for candidate in candidates:
-            if candidate.stat().st_size < 200:
+            fsize = candidate.stat().st_size
+            if fsize < 200:
                 continue
-            # Use ImageMagick to check mean alpha — 0 means fully transparent
-            r = run(["convert", str(candidate), "-channel", "A", "-separate",
-                     "-format", "%[fx:mean]", "info:"])
-            if r.returncode == 0:
-                try:
-                    mean_alpha = float(r.stdout.strip())
-                    if mean_alpha < 0.01:
-                        continue  # skip fully transparent placeholder
-                except ValueError:
-                    pass
+            # Parse PNG IHDR to get dimensions, then check bytes-per-pixel ratio.
+            # Fully transparent placeholders compress to ~5-7 bytes per 1000 pixels.
+            try:
+                import struct
+                with open(candidate, "rb") as cf:
+                    sig = cf.read(8)
+                    if sig[:4] != b'\x89PNG':
+                        continue
+                    cf.read(4)  # IHDR length
+                    cf.read(4)  # "IHDR"
+                    w, h = struct.unpack(">II", cf.read(8))
+                    pixels = w * h
+                    if pixels > 0 and fsize / pixels < 0.02:
+                        continue  # ~blank: real icons are 0.03+ bytes/pixel
+            except Exception:
+                pass
             icon_sample = candidate
             break
 
