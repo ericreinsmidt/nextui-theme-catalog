@@ -70,6 +70,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
+    },
+    {
+      "id": "pop-tarts",
+      "name": "Pop-Tarts",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.preview.png"
     }
   ],
   "wallpapers": [
@@ -177,6 +209,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
+    },
+    {
+      "id": "pop-tarts",
+      "name": "Pop-Tarts",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.preview.png"
     }
   ],
   "icons": [
@@ -271,6 +335,38 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/neon-test.preview.png"
+    },
+    {
+      "id": "pop-tarts",
+      "name": "Pop-Tarts",
+      "author": "Shin",
+      "version": "1.0.0",
+      "description": "Pop-Tarts theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 16,
+      "icon_count": 17,
+      "systems": [
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(LYNX)",
+        "(MD)",
+        "(N64)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PS)",
+        "(SFC)",
+        "(SMS)",
+        "(VB)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts.preview.png"
     }
   ]
 }
