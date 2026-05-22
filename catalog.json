@@ -2,55 +2,6 @@
   "version": 1,
   "themes": [
     {
-      "id": "art-book-nextui",
-      "name": "Art Book NextUI",
-      "author": "Timothy Bueno",
-      "version": "0.3",
-      "description": "Art Book NextUI theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": true,
-      "wallpaper_count": 67,
-      "icon_count": 35,
-      "systems": [
-        "(A2600)",
-        "(A5200)",
-        "(AMIGA)",
-        "(C64)",
-        "(COLECO)",
-        "(COMMODORE)",
-        "(DC)",
-        "(DOS)",
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(GW)",
-        "(INTELLIVISION)",
-        "(MD)",
-        "(N64)",
-        "(NDS)",
-        "(NEOGEO)",
-        "(NGPC)",
-        "(P8)",
-        "(PCE)",
-        "(PKM)",
-        "(PORTS)",
-        "(PS)",
-        "(PSP)",
-        "(PUAE)",
-        "(SFC)",
-        "(SGB)",
-        "(SMS)",
-        "(VB)",
-        "(WSC)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png"
-    },
-    {
       "id": "bliss",
       "name": "Bliss",
       "author": "Syphist",
@@ -470,9 +421,7 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
-    }
-  ],
-  "wallpapers": [
+    },
     {
       "id": "art-book-nextui",
       "name": "Art Book NextUI",
@@ -520,8 +469,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.icon.png"
+    }
+  ],
+  "wallpapers": [
     {
       "id": "bliss",
       "name": "Bliss",
@@ -1058,9 +1011,7 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
-    }
-  ],
-  "icons": [
+    },
     {
       "id": "art-book-nextui",
       "name": "Art Book NextUI",
@@ -1108,8 +1059,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.icon.png"
+    }
+  ],
+  "icons": [
     {
       "id": "bliss",
       "name": "Bliss",
@@ -1530,6 +1485,57 @@
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.zip",
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/pop-tarts-clean.preview.png"
+    },
+    {
+      "id": "art-book-nextui",
+      "name": "Art Book NextUI",
+      "author": "Timothy Bueno",
+      "version": "0.3",
+      "description": "Art Book NextUI theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 67,
+      "icon_count": 35,
+      "systems": [
+        "(A2600)",
+        "(A5200)",
+        "(AMIGA)",
+        "(C64)",
+        "(COLECO)",
+        "(COMMODORE)",
+        "(DC)",
+        "(DOS)",
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(GW)",
+        "(INTELLIVISION)",
+        "(MD)",
+        "(N64)",
+        "(NDS)",
+        "(NEOGEO)",
+        "(NGPC)",
+        "(P8)",
+        "(PCE)",
+        "(PKM)",
+        "(PORTS)",
+        "(PS)",
+        "(PSP)",
+        "(PUAE)",
+        "(SFC)",
+        "(SGB)",
+        "(SMS)",
+        "(VB)",
+        "(WSC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/art-book-nextui.icon.png"
     }
   ]
 }
