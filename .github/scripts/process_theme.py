@@ -189,20 +189,38 @@ def validate_zip(zip_path, work_dir):
     systems = sorted(systems)
 
     # Find representative wallpaper image path (for browse background)
+    # Skip near-blank images (solid black/transparent root wallpapers)
     wallpaper_sample = None
     if has_wallpapers:
         wp_dir = work_dir / "wallpapers"
-        # Prefer root.png, then wallpaper.png (universal), then first system wallpaper
-        for candidate in [wp_dir / "root.png", wp_dir / "wallpaper.png"]:
-            if candidate.exists():
-                wallpaper_sample = candidate
-                break
-        if not wallpaper_sample:
-            sys_dir = wp_dir / "systems"
-            if sys_dir.is_dir():
-                pngs = sorted(sys_dir.glob("*.png"))
-                if pngs:
-                    wallpaper_sample = pngs[0]
+        candidates = []
+        for c in [wp_dir / "root.png", wp_dir / "wallpaper.png"]:
+            if c.exists():
+                candidates.append(c)
+        sys_dir = wp_dir / "systems"
+        if sys_dir.is_dir():
+            candidates.extend(sorted(sys_dir.glob("*.png")))
+        for candidate in candidates:
+            if candidate.stat().st_size < 200:
+                continue
+            try:
+                import struct
+                with open(candidate, "rb") as cf:
+                    sig = cf.read(8)
+                    if sig[:4] != b'\x89PNG':
+                        continue
+                    cf.read(4)
+                    cf.read(4)
+                    w, h = struct.unpack(">II", cf.read(8))
+                    pixels = w * h
+                    # Solid color/blank wallpapers compress to <0.04 bytes/pixel;
+                    # real artwork is 0.05+
+                    if pixels > 0 and candidate.stat().st_size / pixels < 0.04:
+                        continue
+            except Exception:
+                pass
+            wallpaper_sample = candidate
+            break
 
     # Find representative icon image path (for icon browse)
     # Skip fully-transparent PNGs (some themes use blank placeholders)
