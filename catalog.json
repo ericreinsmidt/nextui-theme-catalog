@@ -2,56 +2,6 @@
   "version": 1,
   "themes": [
     {
-      "id": "noir",
-      "name": "Noir",
-      "author": "Leviathan",
-      "version": "1.0.0",
-      "description": "Noir theme",
-      "has_wallpapers": true,
-      "wallpaper_mode": "per_system",
-      "has_icons": true,
-      "wallpaper_count": 35,
-      "icon_count": 37,
-      "systems": [
-        "(32X)",
-        "(A2600)",
-        "(A5200)",
-        "(C128)",
-        "(C64)",
-        "(COLECO)",
-        "(CPC)",
-        "(DC)",
-        "(FBN)",
-        "(FC)",
-        "(GB)",
-        "(GBA)",
-        "(GBC)",
-        "(GG)",
-        "(GW)",
-        "(LYNX)",
-        "(MAME)",
-        "(MD)",
-        "(N64)",
-        "(NDS)",
-        "(NGPC)",
-        "(PCE)",
-        "(PET)",
-        "(PKM)",
-        "(PLUS4)",
-        "(PS)",
-        "(PSP)",
-        "(PUAE)",
-        "(SFC)",
-        "(SGB)",
-        "(SMS)",
-        "(VB)",
-        "(VIC)",
-        "(WSC)"
-      ],
-      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png"
-    },
-    {
       "id": "pearly-gate",
       "name": "Pearly-Gate",
       "author": "Shin",
@@ -482,9 +432,7 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.icon.png"
-    }
-  ],
-  "wallpapers": [
+    },
     {
       "id": "noir",
       "name": "Noir",
@@ -533,8 +481,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
+    }
+  ],
+  "wallpapers": [
     {
       "id": "pearly-gate",
       "name": "Pearly-Gate",
@@ -1088,9 +1040,7 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/naoblack.wallpaper.png",
       "icon_preview_url": ""
-    }
-  ],
-  "icons": [
+    },
     {
       "id": "noir",
       "name": "Noir",
@@ -1139,8 +1089,12 @@
         "(WSC)"
       ],
       "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.zip",
-      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png"
-    },
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
+    }
+  ],
+  "icons": [
     {
       "id": "pearly-gate",
       "name": "Pearly-Gate",
@@ -1572,6 +1526,58 @@
       "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.preview.png",
       "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.wallpaper.png",
       "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/fallout.icon.png"
+    },
+    {
+      "id": "noir",
+      "name": "Noir",
+      "author": "Leviathan",
+      "version": "1.0.0",
+      "description": "Noir theme",
+      "has_wallpapers": true,
+      "wallpaper_mode": "per_system",
+      "has_icons": true,
+      "wallpaper_count": 35,
+      "icon_count": 37,
+      "systems": [
+        "(32X)",
+        "(A2600)",
+        "(A5200)",
+        "(C128)",
+        "(C64)",
+        "(COLECO)",
+        "(CPC)",
+        "(DC)",
+        "(FBN)",
+        "(FC)",
+        "(GB)",
+        "(GBA)",
+        "(GBC)",
+        "(GG)",
+        "(GW)",
+        "(LYNX)",
+        "(MAME)",
+        "(MD)",
+        "(N64)",
+        "(NDS)",
+        "(NGPC)",
+        "(PCE)",
+        "(PET)",
+        "(PKM)",
+        "(PLUS4)",
+        "(PS)",
+        "(PSP)",
+        "(PUAE)",
+        "(SFC)",
+        "(SGB)",
+        "(SMS)",
+        "(VB)",
+        "(VIC)",
+        "(WSC)"
+      ],
+      "url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.zip",
+      "preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.preview.png",
+      "wallpaper_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.wallpaper.png",
+      "icon_preview_url": "https://github.com/ericreinsmidt/nextui-theme-catalog/releases/download/assets/noir.icon.png"
     }
   ]
 }
