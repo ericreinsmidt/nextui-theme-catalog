@@ -14,9 +14,11 @@ import json
 import os
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
+import zlib
 from pathlib import Path
 
 
@@ -83,6 +85,70 @@ def generate_id(name):
     return eid
 
 
+def is_blank_png(png_path):
+    """Check if a PNG is fully transparent (all pixels have alpha=0).
+
+    Pure-Python implementation — no Pillow dependency required.
+    Returns True only for RGBA/greyscale+alpha PNGs where every pixel's
+    alpha channel is zero.
+    """
+    try:
+        with open(png_path, "rb") as f:
+            sig = f.read(8)
+            if sig != b"\x89PNG\r\n\x1a\n":
+                return False
+
+            width = height = 0
+            color_type = bit_depth = 0
+            idat_chunks = []
+
+            while True:
+                header = f.read(8)
+                if len(header) < 8:
+                    break
+                length, chunk_type = struct.unpack(">I4s", header)
+                data = f.read(length)
+                f.read(4)  # CRC
+
+                if chunk_type == b"IHDR":
+                    width, height, bit_depth, color_type = struct.unpack(">IIBB", data[:10])
+                elif chunk_type == b"IDAT":
+                    idat_chunks.append(data)
+                elif chunk_type == b"IEND":
+                    break
+
+            # Only check images with an alpha channel (color types 4 and 6)
+            if color_type not in (4, 6):
+                return False
+
+            raw = zlib.decompress(b"".join(idat_chunks))
+
+            if color_type == 6:  # RGBA
+                channels = 4
+                bpp = channels * (bit_depth // 8)
+                stride = 1 + width * bpp  # filter byte + pixel data
+                for y in range(height):
+                    row = raw[y * stride + 1:(y + 1) * stride]
+                    for x in range(width):
+                        alpha = row[x * bpp + 3]
+                        if alpha != 0:
+                            return False
+            elif color_type == 4:  # Greyscale + alpha
+                channels = 2
+                bpp = channels * (bit_depth // 8)
+                stride = 1 + width * bpp
+                for y in range(height):
+                    row = raw[y * stride + 1:(y + 1) * stride]
+                    for x in range(width):
+                        alpha = row[x * bpp + 1]
+                        if alpha != 0:
+                            return False
+
+            return True
+    except Exception:
+        return False
+
+
 def validate_zip(zip_path, work_dir):
     """Validate theme zip contents. Returns (entry_data, errors)."""
     errors = []
@@ -90,7 +156,7 @@ def validate_zip(zip_path, work_dir):
     # Unzip
     result = run(["unzip", "-o", "-q", str(zip_path), "-d", str(work_dir)])
     if result.returncode != 0:
-        return None, ["Could not extract zip file."]
+        return None, ["Could not extract zip file."], []
 
     # Check for nested directory (zip with single top-level folder)
     contents = list(work_dir.iterdir())
@@ -104,20 +170,20 @@ def validate_zip(zip_path, work_dir):
     # Check manifest
     manifest_path = work_dir / "manifest.json"
     if not manifest_path.exists():
-        return None, ["Missing `manifest.json` in zip root."]
+        return None, ["Missing `manifest.json` in zip root."], []
 
     try:
         with open(manifest_path) as f:
             manifest = json.load(f)
     except (json.JSONDecodeError, IOError) as e:
-        return None, [f"Invalid manifest.json: {e}"]
+        return None, [f"Invalid manifest.json: {e}"], []
 
     for field in ["name", "author", "version"]:
         if field not in manifest or not manifest[field]:
             errors.append(f"manifest.json missing required field: `{field}`")
 
     if errors:
-        return None, errors
+        return None, errors, []
 
     # Check preview
     preview_path = work_dir / "preview.png"
@@ -159,7 +225,7 @@ def validate_zip(zip_path, work_dir):
                           f"but content structure is `{wallpaper_mode}`.")
 
     if errors:
-        return None, errors
+        return None, errors, []
 
     # Spot-check PNGs
     for png in work_dir.rglob("*.png"):
@@ -171,7 +237,7 @@ def validate_zip(zip_path, work_dir):
             break
 
     if errors:
-        return None, errors
+        return None, errors, []
 
     # Count assets
     wallpaper_count = 0
@@ -179,14 +245,34 @@ def validate_zip(zip_path, work_dir):
         wallpaper_count = len(list((work_dir / "wallpapers").rglob("*.png")))
 
     icon_count = 0
+    blank_icon_count = 0
     if has_icons:
-        icon_count = len(list((work_dir / "icons").rglob("*.png")))
+        for png in (work_dir / "icons").rglob("*.png"):
+            if is_blank_png(png):
+                blank_icon_count += 1
+            else:
+                icon_count += 1
+        if blank_icon_count:
+            print(f"  Skipped {blank_icon_count} blank/transparent icon(s)")
+        if icon_count == 0:
+            has_icons = False
 
-    # Enumerate system tags
+    # Enumerate system tags (skip blank icons)
     systems = set()
-    for png in work_dir.rglob("systems/*.png"):
-        systems.add(png.stem)
+    if has_wallpapers:
+        for png in (work_dir / "wallpapers").rglob("systems/*.png"):
+            systems.add(png.stem)
+    if has_icons:
+        for png in (work_dir / "icons").rglob("systems/*.png"):
+            if not is_blank_png(png):
+                systems.add(png.stem)
     systems = sorted(systems)
+
+    warnings = []
+    if blank_icon_count:
+        warnings.append(f"Found {blank_icon_count} fully-transparent icon(s) that were "
+                        f"excluded from the count. Consider removing blank placeholder PNGs "
+                        f"from the zip.")
 
     entry = {
         "id": "",  # filled in by caller
@@ -204,7 +290,7 @@ def validate_zip(zip_path, work_dir):
         "preview_url": "",
     }
 
-    return entry, []
+    return entry, [], warnings
 
 
 def update_catalog(entry):
@@ -298,11 +384,14 @@ def main():
 
         # Validate
         print("Validating zip contents...")
-        entry, errors = validate_zip(zip_path, work_dir)
+        entry, errors, warnings = validate_zip(zip_path, work_dir)
 
         if errors:
             error_list = "\n".join(f"- {e}" for e in errors)
             fail(f"Theme validation failed:\n\n{error_list}")
+
+        for w in warnings:
+            print(f"  Warning: {w}")
 
         entry["id"] = eid
         entry["url"] = f"https://github.com/{REPO}/releases/download/assets/{eid}.zip"
@@ -382,6 +471,11 @@ def main():
         print("PR may already exist, continuing...")
 
     # Comment on issue
+    warn_section = ""
+    if warnings:
+        warn_list = "\n".join(f"- ⚠️ {w}" for w in warnings)
+        warn_section = f"\n\n### Warnings\n\n{warn_list}\n"
+
     comment_on_issue(
         f"## Validation Passed!\n\n"
         f"Theme **{theme_name}** has been validated and assets uploaded.\n\n"
@@ -393,6 +487,7 @@ def main():
         f"| Wallpapers | {entry['wallpaper_mode']} ({entry['wallpaper_count']} files) |\n"
         f"| Icons | {entry['icon_count']} files |\n"
         f"| Systems | {', '.join(entry['systems']) or 'N/A'} |"
+        f"{warn_section}"
     )
 
     print(f"Done! {action}d theme: {theme_name} (id: {eid})")
