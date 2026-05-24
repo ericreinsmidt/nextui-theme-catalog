@@ -1,6 +1,6 @@
 # NextUI Theme Catalog
 
-Community themes for [TheyTheMeRollin](https://github.com/ericreinsmidt/nextui-theythemerollin), a theme manager for NextUI on TrimUI handhelds (Brick, Smart Pro).
+Community themes for [Bling](https://github.com/ericreinsmidt/nextui-bling), a theme manager for NextUI on TrimUI handhelds (Brick, Smart Pro, Smart Pro S).
 
 Themes can include **wallpapers** (menu backgrounds), **icons** (system icons), or both.
 
