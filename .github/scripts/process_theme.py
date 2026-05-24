@@ -85,6 +85,29 @@ def generate_id(name):
     return eid
 
 
+def get_png_dimensions(png_path):
+    """Read width and height from a PNG file's IHDR chunk.
+
+    Returns (width, height) or None on failure.
+    """
+    try:
+        with open(png_path, "rb") as f:
+            sig = f.read(8)
+            if sig != b"\x89PNG\r\n\x1a\n":
+                return None
+            header = f.read(8)
+            if len(header) < 8:
+                return None
+            length, chunk_type = struct.unpack(">I4s", header)
+            if chunk_type != b"IHDR":
+                return None
+            data = f.read(length)
+            width, height = struct.unpack(">II", data[:8])
+            return (width, height)
+    except Exception:
+        return None
+
+
 def is_blank_png(png_path):
     """Check if a PNG is fully transparent (all pixels have alpha=0).
 
@@ -201,17 +224,68 @@ def validate_zip(zip_path, work_dir):
     if not has_wallpapers and not has_icons:
         errors.append("Zip must contain a `wallpapers/` and/or `icons/` directory.")
 
+    # Detect resolution subdirectories under wallpapers/
+    # e.g. wallpapers/1024x768/systems/, wallpapers/1024x720/systems/
+    wallpaper_resolutions = []
+    if has_wallpapers:
+        res_pattern = re.compile(r"^(\d+)x(\d+)$")
+        for child in sorted((work_dir / "wallpapers").iterdir()):
+            if child.is_dir() and res_pattern.match(child.name):
+                wallpaper_resolutions.append(child.name)
+
     # Detect wallpaper mode
     wallpaper_mode = "none"
     if has_wallpapers:
-        if (work_dir / "wallpapers" / "wallpaper.png").exists():
-            wallpaper_mode = "universal"
-        elif (work_dir / "wallpapers" / "systems").is_dir() or \
-             (work_dir / "wallpapers" / "root.png").exists():
-            wallpaper_mode = "per_system"
+        if wallpaper_resolutions:
+            # Multi-resolution: check structure inside resolution folders
+            for res_dir_name in wallpaper_resolutions:
+                res_dir = work_dir / "wallpapers" / res_dir_name
+                has_universal = (res_dir / "wallpaper.png").exists()
+                has_per_system = (res_dir / "systems").is_dir() or (res_dir / "root.png").exists()
+                if has_universal:
+                    detected = "universal"
+                elif has_per_system:
+                    detected = "per_system"
+                else:
+                    errors.append(f"`wallpapers/{res_dir_name}/` has no recognizable content "
+                                  f"(need `wallpaper.png` for universal, or `systems/` or `root.png` "
+                                  f"for per-system).")
+                    continue
+
+                if wallpaper_mode == "none":
+                    wallpaper_mode = detected
+                elif wallpaper_mode != detected:
+                    errors.append(f"Inconsistent wallpaper mode across resolution folders: "
+                                  f"expected `{wallpaper_mode}` but `wallpapers/{res_dir_name}/` "
+                                  f"is `{detected}`.")
+
+            # Validate that PNGs in resolution folders match declared dimensions
+            for res_dir_name in wallpaper_resolutions:
+                match = res_pattern.match(res_dir_name)
+                expected_w, expected_h = int(match.group(1)), int(match.group(2))
+                res_dir = work_dir / "wallpapers" / res_dir_name
+                checked = 0
+                for png in res_dir.rglob("*.png"):
+                    dims = get_png_dimensions(png)
+                    if dims and dims != (expected_w, expected_h):
+                        rel = png.relative_to(work_dir)
+                        errors.append(f"`{rel}` is {dims[0]}x{dims[1]} but is in the "
+                                      f"`{res_dir_name}` folder (expected {expected_w}x{expected_h}).")
+                        break
+                    checked += 1
+                if checked == 0:
+                    errors.append(f"`wallpapers/{res_dir_name}/` contains no PNG files.")
         else:
-            errors.append("`wallpapers/` exists but has no recognizable content "
-                          "(need `wallpaper.png` for universal, or `systems/` or `root.png` for per-system).")
+            # Flat structure (legacy / single resolution)
+            if (work_dir / "wallpapers" / "wallpaper.png").exists():
+                wallpaper_mode = "universal"
+            elif (work_dir / "wallpapers" / "systems").is_dir() or \
+                 (work_dir / "wallpapers" / "root.png").exists():
+                wallpaper_mode = "per_system"
+            else:
+                errors.append("`wallpapers/` exists but has no recognizable content "
+                              "(need `wallpaper.png` for universal, or `systems/` or `root.png` "
+                              "for per-system).")
 
         # Validate manifest wallpaper mode matches
         manifest_wp = manifest.get("wallpapers", {})
@@ -260,8 +334,14 @@ def validate_zip(zip_path, work_dir):
     # Enumerate system tags (skip blank icons)
     systems = set()
     if has_wallpapers:
-        for png in (work_dir / "wallpapers").rglob("systems/*.png"):
-            systems.add(png.stem)
+        if wallpaper_resolutions:
+            # Multi-res: look inside each resolution folder
+            for res_dir_name in wallpaper_resolutions:
+                for png in (work_dir / "wallpapers" / res_dir_name).rglob("systems/*.png"):
+                    systems.add(png.stem)
+        else:
+            for png in (work_dir / "wallpapers").rglob("systems/*.png"):
+                systems.add(png.stem)
     if has_icons:
         for png in (work_dir / "icons").rglob("systems/*.png"):
             if not is_blank_png(png):
@@ -270,9 +350,9 @@ def validate_zip(zip_path, work_dir):
 
     warnings = []
     if blank_icon_count:
-        warnings.append(f"Found {blank_icon_count} fully-transparent icon(s) that were "
-                        f"excluded from the count. Consider removing blank placeholder PNGs "
-                        f"from the zip.")
+        warnings.append(f"Found {blank_icon_count} fully-transparent icon(s). These are "
+                        f"kept in the zip (they hide default icons when applied) but are "
+                        f"excluded from the icon count in the catalog.")
 
     entry = {
         "id": "",  # filled in by caller
@@ -282,6 +362,7 @@ def validate_zip(zip_path, work_dir):
         "description": manifest.get("description", ""),
         "has_wallpapers": has_wallpapers,
         "wallpaper_mode": wallpaper_mode,
+        "wallpaper_resolutions": wallpaper_resolutions,
         "has_icons": has_icons,
         "wallpaper_count": wallpaper_count,
         "icon_count": icon_count,
@@ -442,6 +523,10 @@ def main():
     if result.returncode != 0:
         fail("Failed to push branch.")
 
+    res_info = ""
+    if entry["wallpaper_resolutions"]:
+        res_info = f" — {', '.join(entry['wallpaper_resolutions'])}"
+
     pr_body = (
         f"## {action} Theme: {theme_name}\n\n"
         f"Submitted in #{ISSUE_NUMBER}\n\n"
@@ -450,7 +535,7 @@ def main():
         f"| Name | {entry['name']} |\n"
         f"| Author | {entry['author']} |\n"
         f"| Version | {entry['version']} |\n"
-        f"| Wallpapers | {entry['wallpaper_mode']} ({entry['wallpaper_count']} files) |\n"
+        f"| Wallpapers | {entry['wallpaper_mode']} ({entry['wallpaper_count']} files){res_info} |\n"
         f"| Icons | {entry['icon_count']} files |\n"
         f"| Systems | {', '.join(entry['systems']) or 'N/A'} |\n\n"
         f"**Preview:**\n\n"
@@ -484,7 +569,7 @@ def main():
         f"| Field | Value |\n"
         f"|-------|-------|\n"
         f"| ID | `{eid}` |\n"
-        f"| Wallpapers | {entry['wallpaper_mode']} ({entry['wallpaper_count']} files) |\n"
+        f"| Wallpapers | {entry['wallpaper_mode']} ({entry['wallpaper_count']} files){res_info} |\n"
         f"| Icons | {entry['icon_count']} files |\n"
         f"| Systems | {', '.join(entry['systems']) or 'N/A'} |"
         f"{warn_section}"
